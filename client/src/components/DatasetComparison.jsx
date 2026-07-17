@@ -13,7 +13,7 @@ function DatasetComparison() {
             setLoading(true);
 
             const response = await axios.get(
-                "https://name-smart-dataset-analyzer-api.onrender.com/api/compare"
+                "http://localhost:5000/api/compare"
             );
 
             console.log(response.data);
