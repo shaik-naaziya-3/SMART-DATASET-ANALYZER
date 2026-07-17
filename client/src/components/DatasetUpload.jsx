@@ -40,7 +40,7 @@ function DatasetUpload() {
 
             const response = await axios.post(
 
-                "http://localhost:5000/api/analyze",
+                "https://name-smart-dataset-analyzer-api.onrender.com/api/analyze",
 
                 formData
 
@@ -89,7 +89,7 @@ function DatasetUpload() {
 
             const response = await axios.post(
 
-                "http://localhost:5000/api/train",
+                "https://name-smart-dataset-analyzer-api.onrender.com/api/train",
 
                 formData
 
@@ -128,7 +128,7 @@ function DatasetUpload() {
 
         window.open(
 
-            "http://localhost:5000/api/download",
+            "https://name-smart-dataset-analyzer-api.onrender.com/api/download",
 
             "_blank"
 

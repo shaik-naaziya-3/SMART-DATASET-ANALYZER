@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function DatasetComparison() {
+function DatasetComparison() {ht
 
     const [datasets, setDatasets] = useState([]);
 
@@ -15,7 +15,7 @@ function DatasetComparison() {
 
             const response = await axios.get(
 
-                "http://localhost:5000/api/compare"
+                "https://name-smart-dataset-analyzer-api.onrender.com/api/compare"
 
             );
 
