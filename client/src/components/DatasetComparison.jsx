@@ -1,10 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 
-function DatasetComparison() {ht
+function DatasetComparison() {
 
     const [datasets, setDatasets] = useState([]);
-
     const [loading, setLoading] = useState(false);
 
     const compare = async () => {
@@ -14,9 +13,7 @@ function DatasetComparison() {ht
             setLoading(true);
 
             const response = await axios.get(
-
                 "https://name-smart-dataset-analyzer-api.onrender.com/api/compare"
-
             );
 
             console.log(response.data);
@@ -28,7 +25,6 @@ function DatasetComparison() {ht
         catch (error) {
 
             console.log(error);
-
             alert("Unable to Compare Datasets");
 
         }
@@ -45,87 +41,55 @@ function DatasetComparison() {ht
 
         <div className="card">
 
-            <h2>
+            <h2>DATASET COMPARISON</h2>
 
-                DATASET COMPARISON
+            <button onClick={compare}>
 
-            </h2>
-
-            <button
-
-                onClick={compare}
-
-            >
-
-                {
-
-                    loading
-
-                        ? "LOADING..."
-
-                        : "COMPARE DATASETS"
-
-                }
+                {loading ? "LOADING..." : "COMPARE DATASETS"}
 
             </button>
 
             <br /><br />
 
-            {
+            {datasets.length > 0 && (
 
-                datasets.length > 0 && (
+                <table border="1">
 
-                    <table>
+                    <thead>
 
-                        <thead>
+                        <tr>
 
-                            <tr>
+                            <th>Dataset</th>
+                            <th>Rows</th>
+                            <th>Columns</th>
+                            <th>Missing Values</th>
+                            <th>Duplicates</th>
 
-                                <th>Dataset</th>
+                        </tr>
 
-                                <th>Rows</th>
+                    </thead>
 
-                                <th>Columns</th>
+                    <tbody>
 
-                                <th>Missing Values</th>
+                        {datasets.map((dataset, index) => (
 
-                                <th>Duplicates</th>
+                            <tr key={index}>
+
+                                <td>{dataset.name}</td>
+                                <td>{dataset.rows}</td>
+                                <td>{dataset.columns}</td>
+                                <td>{dataset.missing_values}</td>
+                                <td>{dataset.duplicates}</td>
 
                             </tr>
 
-                        </thead>
+                        ))}
 
-                        <tbody>
+                    </tbody>
 
-                            {
+                </table>
 
-                                datasets.map((dataset, index) => (
-
-                                    <tr key={index}>
-
-                                        <td>{dataset.name}</td>
-
-                                        <td>{dataset.rows}</td>
-
-                                        <td>{dataset.columns}</td>
-
-                                        <td>{dataset.missing_values}</td>
-
-                                        <td>{dataset.duplicates}</td>
-
-                                    </tr>
-
-                                ))
-
-                            }
-
-                        </tbody>
-
-                    </table>
-
-                )
-
-            }
+            )}
 
         </div>
 
